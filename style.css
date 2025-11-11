@@ -1,0 +1,473 @@
+/* --- 1. CORE STYLES & VARIABLES --- */
+:root {
+    --primary-color: #ff69b4; /* Hot Pink / Deep Rose */
+    --secondary-color: #dda0dd; /* Plum / Light Violet */
+    --tertiary-color: #ffdab9; /* Peach Puff / Light Gold */
+    --background-color-light: #fff0f5; /* Blush White */
+    --text-color-main: #501d3a; /* Deep Plum Text */
+    --text-color-light: #a05280; /* Muted Rose Text */
+    --card-background: rgba(255, 255, 255, 0.95); /* Less transparent */
+    --shadow-color-soft: rgba(255, 105, 180, 0.6); /* Deeper shadow */
+    --border-glow: #ffd1dc;
+    --anime-highlight: #ffead0; /* Soft Peach Highlight */
+}
+
+body {
+    font-family: 'Lora', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; 
+    color: var(--text-color-main);
+    text-align: center;
+    padding: 30px 20px;
+    overflow: hidden; 
+    opacity: 1;
+    transition: opacity 0.5s ease-out; 
+    position: relative; 
+    cursor: none; /* Hide default cursor */
+    /* ================================================= */
+/* 🛑 NEW: FULL-PAGE BACKGROUND IMAGE SETUP          */
+/* This is the ONLY section you need to add or edit. */
+/* ================================================= */
+
+    /* Set the background to your local image file */
+    background-image: url("images/photo2.png");
+    
+    /* Ensure the image covers the entire viewport without being distorted */
+    background-size: cover;
+    
+    /* Fix the image in place so it doesn't scroll with the content */
+    background-attachment: fixed;
+    
+    /* Center the image horizontally and vertically */
+    background-position: center center;
+    
+    /* Ensure the body takes up at least the full screen height */
+    min-height: 100vh;
+    
+    /* Remove any default browser padding/margin */
+    margin: 0;
+    padding: 0;
+    
+    /* Keep all your existing font/color settings below this! */
+}
+
+/* DO NOT remove or change any of your existing CSS for:
+   - .slideshow-container 
+   - #slideshowTab 
+   - h1, h2, h3 or any other elements.
+*/
+
+/* --- 2. VINTAGE ANIME BACKGROUND & LIGHT EFFECTS (UNCHANGED) --- */
+.anime-background-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -3;
+}
+.anime-background-image {
+    position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
+    /* !!! PLACEHOLDER: REPLACE THIS URL WITH YOUR ANIME BACKGROUND IMAGE !!! */
+    background-image: url('https://i.imgur.com/your-anime-background-image.jpg'); 
+    background-size: cover; background-position: center center;
+    transition: transform 0.3s ease-out; 
+    filter: brightness(0.9) saturate(1.1); 
+    animation: background-pan 60s linear infinite alternate; 
+}
+@keyframes background-pan {
+    0% { transform: translate(0, 0) scale(1.05); }
+    100% { transform: translate(-10%, -10%) scale(1.05); }
+}
+.shinkai-light-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+    animation: light-pulse 10s infinite alternate;
+    pointer-events: none;
+}
+@keyframes light-pulse {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.85; transform: scale(1.02); }
+}
+.star-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden; }
+.star {
+    position: absolute; background-color: rgba(255, 255, 255, 0.9); border-radius: 50%;
+    opacity: 0; animation: star-twinkle 8s infinite ease-in-out; 
+    box-shadow: 0 0 4px var(--anime-highlight);
+}
+@keyframes star-twinkle {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.9; }
+    80% { opacity: 0.9; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+.comet-trail {
+    position: absolute; width: 3px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--anime-highlight) 50%, rgba(255,255,255,0) 100%);
+    filter: blur(1px); animation: shooting-star 15s linear infinite; opacity: 0; border-radius: 50%;
+    box-shadow: 0 0 10px var(--anime-highlight); z-index: -1;
+}
+.comet-trail:nth-child(1) { left: 15%; top: -10%; animation-delay: 0s; transform: rotate(45deg); }
+.comet-trail:nth-child(2) { left: 50%; top: -30%; animation-delay: 5s; transform: rotate(60deg); }
+.comet-trail:nth-child(3) { left: 80%; top: -5%; animation-delay: 10s; transform: rotate(30deg); }
+@keyframes shooting-star {
+    0%   { transform: translate(0, 0) rotate(45deg); opacity: 0; }
+    10%  { opacity: 1; }
+    30%  { transform: translate(200px, 200px) rotate(45deg); opacity: 0; }
+    100% { transform: translate(300px, 300px) rotate(45deg); opacity: 0; }
+}
+.anime-silhouette {
+    position: fixed; bottom: 50px; right: 50px; width: 200px; height: 250px; 
+    /* !!! PLACEHOLDER: REPLACE THIS URL WITH YOUR SILHOUETTE IMAGE !!! */
+    background-image: url('https://i.imgur.com/anime-couple-silhouette.png'); 
+    background-size: contain; background-repeat: no-repeat;
+    opacity: 0; transition: opacity 2s ease-in, transform 2s;
+    z-index: 5; pointer-events: none;
+    transform: translateX(50px);
+}
+.anime-silhouette.active { opacity: 0.7; transform: translateX(0); }
+
+/* --- 3. INTERACTIVE CURSOR EFFECT (UNCHANGED) --- */
+#cursor-trail {
+    position: fixed; pointer-events: none; width: 8px; height: 8px;
+    background-color: var(--primary-color); border-radius: 50%; opacity: 0.8;
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--border-glow);
+    transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, opacity 0.3s;
+    z-index: 9999;
+}
+.hover-effect { width: 20px !important; height: 20px !important; opacity: 1 !important; }
+
+/* --- 4. CONTAINER AND TEXT STYLES (UNCHANGED) --- */
+.container {
+    background-color: var(--card-background); border-radius: 25px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3), 0 0 30px var(--shadow-color-soft), inset 0 0 15px var(--border-glow);
+    border: 4px double var(--primary-color); 
+    padding: 50px; max-width: 900px; width: 95%; position: relative; z-index: 10;
+    transform: scale(0.98); transition: transform 0.5s;
+}
+.container:hover { transform: scale(1); }
+#countdown-section h2, #main-content h1 {
+    background-image: linear-gradient(90deg, #fff0f5 0%, var(--primary-color) 25%, #fff0f5 50%, var(--primary-color) 75%, #fff0f5 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s infinite linear, pulse-text 3s infinite alternate; 
+    font-family: 'Dancing Script', cursive;
+    font-size: 5.5em; 
+}
+#countdown-section h2 { font-size: 3.5em; }
+@keyframes text-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes pulse-text { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.02); opacity: 0.95; } 100% { transform: scale(1); opacity: 1; } }
+#main-content #subtitle {
+    font-family: 'Noto Serif JP', serif; font-size: 1.6em; color: var(--text-color-light);
+    font-style: italic; margin-bottom: 40px;
+}
+#main-content { display: none; opacity: 0; transition: opacity 1s ease-in; }
+#main-content.active { display: block; opacity: 1; }
+
+/* --- 5. COUNTDOWN TIMER STYLES (UNCHANGED) --- */
+#countdown-timer { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+.time-unit { color: var(--secondary-color); border: 1px solid var(--secondary-color); padding: 10px 15px; border-radius: 5px; }
+.time-value { font-size: 2.2em; display: block; }
+.time-label { font-size: 0.8em; text-transform: uppercase; }
+#revealButton {
+    background-color: var(--secondary-color); color: white; padding: 12px 25px; font-size: 1.2em; border: none; border-radius: 5px;
+    cursor: pointer; transition: background-color 0.3s, transform 0.3s; margin-top: 30px; animation: pulse 1.5s infinite;
+}
+#revealButton:hover { background-color: #a040a0; transform: scale(1.05); }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 102, 153, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 102, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 102, 153, 0); }
+}
+
+/* --- 6. TAB AND ENVELOPE STYLES (UPDATED FOR NO GALLERY) --- */
+
+.tabs {
+    display: flex; justify-content: center; margin-bottom: 25px;
+    border-bottom: 2px solid var(--border-glow);
+}
+
+.tab-button {
+    background-color: var(--background-color-light); 
+    color: var(--text-color-light);
+    border: 2px solid var(--border-glow);
+    border-bottom: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    top: 2px;
+}
+
+.tab-button:hover {
+    background-color: var(--tertiary-color);
+    color: var(--text-color-main);
+    transform: scale(1.05);
+    box-shadow: 0 -5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.tab-button.active {
+    background-color: white; 
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 700;
+    transform: scale(1.1);
+    box-shadow: 0 -8px 20px var(--shadow-color-soft);
+    z-index: 20; 
+}
+
+.tab-content { min-height: 500px; padding: 20px 0; animation: fadeIn 0.8s ease-out; display: none; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Envelope Styles (UNCHANGED) */
+.envelope-container {
+    background: linear-gradient(135deg, var(--tertiary-color), var(--background-color-dark));
+    width: 180px; height: 120px; border-radius: 8px; cursor: pointer;
+    transition: transform 0.8s ease-in-out, box-shadow 0.5s, background-color 0.5s; position: relative; margin: 20px auto;
+    box-shadow: 0 0 30px var(--primary-color), 0 10px 20px rgba(0,0,0,0.3); border: 3px solid var(--secondary-color);
+}
+.envelope-container:hover { transform: translateY(-5px) scale(1.05) rotateZ(-1deg); }
+.envelope-flap {
+    position: absolute; top: 0; left: 0; width: 0; height: 0;
+    border-left: 90px solid transparent; border-right: 90px solid transparent;
+    border-top: 60px solid var(--primary-color); transform-origin: top;
+    transition: transform 0.8s ease-in-out;
+}
+.envelope-seal {
+    position: absolute; width: 40px; height: 40px; background-color: var(--primary-color);
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    font-family: 'Dancing Script', cursive; font-size: 1.8em; color: white;
+    box-shadow: 0 0 15px var(--primary-color), 0 0 5px rgba(0,0,0,0.5); z-index: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+.envelope-container.open .envelope-seal { opacity: 0; transform: scale(0); }
+.envelope-container.open { transform: translateY(-40px) scale(1.1); background-color: var(--background-color-light); }
+.envelope-container.open .envelope-flap { transform: rotateX(180deg) translateZ(10px); }
+
+#message-content {
+    /* Height calculation simplified since photos are gone */
+    height: 0; overflow: hidden; width: 90%; margin: 40px auto; opacity: 0;
+    background: var(--background-color-light); border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(128, 0, 128, 0.1);
+    transition: height 1.8s ease-out, opacity 1.5s ease-in 0.8s;
+    border: 2px solid var(--secondary-color); position: relative;
+}
+#message-content.revealed { height: auto; opacity: 1; }
+
+.message-text {
+    font-family: 'Lora', serif; font-size: 1.3em; color: var(--text-color-main);
+    padding: 30px; line-height: 1.8; text-align: left;
+}
+
+/* --- SLIDESHOW STYLES (UNCHANGED) --- */
+.slideshow-container {
+    max-width: 600px;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 15px var(--primary-color);
+}
+#slideshow-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+.slideshow-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(80, 29, 58, 0.7); /* Deep Plum overlay */
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-family: 'Dancing Script', cursive;
+}
+.slideshow-controls button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.slideshow-controls button:hover {
+    background-color: #a040a0;
+    transform: scale(1.1);
+}
+
+/* --- 7. Responsive Adjustments (UNCHANGED) --- */
+@media (max-width: 500px) {
+  .for-you-img {
+    max-width: 100px;
+  }
+}
+    #countdown-section h2 { font-size: 2.5em; }
+    #main-content h1 { font-size: 4em; }
+    .container { padding: 30px; }
+    .anime-silhouette { bottom: 20px; right: 20px; width: 150px; height: 180px; }
+    #slideshow-image { height: 300px; }
+    
+    .for-you-img {
+  display: block;
+  margin: 20px auto;        /* centers the image */
+  max-width: 500px;         /* adjust size */
+  height: auto;             /* keeps correct proportion */
+  border-radius: 10px;      /* optional rounded corners */
+}
+/* --- SLIDESHOW STYLES (FIXED FOR PORTRAIT IMAGES) --- */
+.slideshow-container {
+    max-width: 600px;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 15px var(--primary-color);
+    background-color: #fff0f5; /* soft pink background to match theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slideshow-image {
+    width: 100%;
+    height: auto;            /* 🔧 allow image to keep its natural height */
+    max-height: 600px;       /* optional limit so it doesn’t grow too tall */
+    object-fit: contain;     /* 🔧 show the entire image without cropping */
+    display: block;
+    transition: opacity 1s ease-in-out;
+    background-color: #fff;  /* optional background behind transparent images */
+}
+
+.slideshow-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(80, 29, 58, 0.7);
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-family: 'Dancing Script', cursive;
+}
+
+.slideshow-controls button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.slideshow-controls button:hover {
+    background-color: #a040a0;
+    transform: scale(1.1);
+}
+@media (max-width: 500px) {
+  #slideshow-image {
+    max-height: 400px; /* smaller height for phones */
+  }
+}
+
+/* --- SLIDESHOW STYLES (FIXED FOR PORTRAIT & LANDSCAPE) --- */
+.slideshow-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 15px var(--primary-color);
+  background-color: #000; /* gives clean black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* the actual slideshow image */
+#slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes both portrait and landscape fill the box */
+  object-position: center;
+  border-radius: 15px;
+  transition: opacity 1s ease-in-out;
+}
+
+/* caption overlay */
+.slideshow-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(80, 29, 58, 0.7);
+  color: white;
+  padding: 15px;
+  font-size: 1.2em;
+  font-family: 'Dancing Script', cursive;
+  border-radius: 0 0 15px 15px;
+}
+
+/* next/prev buttons */
+.slideshow-controls button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.slideshow-controls button:hover {
+  background-color: #a040a0;
+  transform: scale(1.1);
+}
+
+/* adjust height for different devices */
+@media (max-width: 500px) {
+  .slideshow-container {
+    max-width: 100%;
+    height: 400px;
+  }
+}
+
+@media (min-width: 501px) {
+  .slideshow-container {
+    height: 600px;
+  }
+}
+body {
+    overflow-y: auto; /* instead of overflow: hidden */
+}
+
+/* Scrollable Anniversary Message */
+#message-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Optional scrollbar styling */
+#message-content::-webkit-scrollbar {
+    width: 8px;
+}
+#message-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+#message-content::-webkit-scrollbar-track {
+    background: var(--background-color-light);
+}

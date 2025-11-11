@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our First Anniversary</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lora:ital@0;1&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="anime-background-container">
+        <div class="anime-background-image" id="animeBgImage"></div>
+    </div>
+    <div class="shinkai-light-overlay"></div>
+    <div class="star-field" id="star-field">
+        <div class="comet-trail"></div>
+        <div class="comet-trail"></div>
+        <div class="comet-trail"></div>
+    </div>
+    
+    <div class="anime-silhouette" id="animeSilhouette"></div> 
+    <div id="cursor-trail"></div> <div class="container">
+        <div id="countdown-section">
+            <h2 id="main-countdown-title">I am so lucky to have you!</h2>
+            <p id="message">Counting down until our Anniversary!</p>
+            
+            <div id="countdown-timer">
+                <div class="time-unit"><span class="time-value" id="days">00</span><span class="time-label">DAYS</span></div>
+                <div class="time-unit"><span class="time-value" id="hours">00</span><span class="time-label">HOURS</span></div>
+                <div class="time-unit"><span class="time-value" id="minutes">00</span><span class="time-label">MINUTES</span></div>
+                <div class="time-unit"><span class="time-value" id="seconds">00</span><span class="time-label">SECONDS</span></div>
+            </div>
+
+            <button id="revealButton">honk mimimi 🐻❤️</button>
+            
+            <p style="margin-top: 20px; font-size: 0.9em; color: var(--text-color-main);">click that and you'll see a magic 👆👆</p>
+        </div>
+
+        <div id="main-content">
+            <h1>Happy Anniversary!</h1>
+            <p id="subtitle">mahal na mahal kita.</p>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('revealTab', this)">my message for you</button>
+                <button class="tab-button" onclick="openTab('slideshowTab', this)">our slideshow </button>
+                <button class="tab-button" onclick="openTab('coordsTab', this)">thiz is for you</button>
+            </div>
+            
+            <div id="revealTab" class="tab-content active">
+                
+                <h2 style="color: var(--text-color-main); font-family: 'Dancing Script', cursive; font-size: 2.5em; margin-bottom: 25px;">A Letter for You...</h2>
+                
+                <div id="reveal-section">
+                    <div class="envelope-container" onclick="toggleEnvelope(this)">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-seal">💖</div> </div>
+                </div>
+
+                <div id="message-content">
+                    <div class="message-text">
+                        <p>My Dearest baby baby danda,</p> 
+                        it’s been one whole year—one year of love, distance, laughter, tears, misunderstandings, and countless moments that have made us stronger, even when we didn’t realize it. it still feels unreal that we’ve made it this far—that even through the storms, the distance, and all the moments that tried to break us, we’re still here. maybe not as perfect as we imagined, maybe not as okay as we want to be, but still here. still fighting. still holding on. a year full of lessons, patience, and quiet faith that even when things get hard, somehow, we’ll still find our way back to each other. i think i will fall in love with every single version of you.
+all i have to do is to learn about you all over, again & again and i dont mind doing that.</p>
+
+<p>i know things are not easy right now. we’re not in our best phase—we’ve fought, said hurtful words, misunderstood each other, and reached moments where we didn’t even know what to say anymore. but despite everything, despite the silence, the distance, and all the pain that came in between, i still love you. i still choose you. i still believe in us. this year wasn’t easy for us. there were days filled with laughter, but also nights heavy with silence. there were moments when we understood each other so deeply, and others when we barely knew how to talk without hurting each other. but through every fight, every tear, my love for you never changed.</p>
+
+<p>long distance isn’t simple—it’s full of longing. there are nights i stare at my screen wishing i could just reach through and hug you. days when i’d give anything just to see your smile in person, to hear your laughter not through  call but right beside me. even though we’re miles apart, you’ve managed to make me feel loved, cared for, and special in your own beautiful way. that’s something i’ll always be grateful for. you're the one i crave for comfort when everything feels wrong. i love you and i miss you in ways i can’t always explain— not just your voice or your face, but the peace you bring. the kind that makes the world a little less heavy just because you exist.</p>
+
+<p>things are messy right now. we’ve been hurt, we’ve been tired, and we’ve both said things we didn’t mean. maybe we need this space, maybe we need this pause. but please know—my heart hasn’t walked away. it’s still right here, waiting, hoping, believing that after everything, we’ll find our way back stronger. i’m sorry, love. i know i’ve made things difficult.
+i know there were times when i didn’t listen enough, when i let my emotions speak louder than my understanding. i know i’ve hurt you in ways i can’t take back, and im truly sorry. i never wanted to be the reason you feel unloved or unsafe. i only ever wanted to make you feel at peace — to make you feel that even from afar, you are deeply loved.
+    i’m sorry if sometimes i make things harder than they should be. i know i’ve caused you pain, confusion, and exhaustion at times kasi sometimes my emotions get the best of me. but i’m trying. i’m learning. because you’re worth the effort, the change, and every piece of growth i’m working on.</p>
+
+<p>even if we’re in this stage right now, please don’t ever doubt how much you mean to me. you’re still the person i think of before i sleep, the one i silently wish good morning to, the one who crosses my mind every time i see something beautiful. you’re still my favorite person, my home—even from afar. thank you for staying, for understanding me when i’m hard to deal with, for choosing to love me even when i made it difficult. thank you for the patience, the care, and the love you’ve given me all this time. i will never take that for granted.</p>
+
+                        
+                        
+                        <p>look how far we've come, who would've thought? pero, to be honest, if i'm given a chance to live my life all over again, i wouldnt do it the same way, kasi maraming beses ko ikaw nasaktan but i am willing to make amends and makabawi po sa lahat ng pagkakasala ko sayo. i want to make things right and keep you even if sobrang messy ngayon, kahit na hindi natin kayang ayusin sa ngayon, hindi pa rin ako mawawalan ng hope kasi alam konh at the end of the day, sa isa't isa lang po tayo tatakbo. mahal na mahal kita.</p>
+                        
+           <p>if loving me was so hard and draining, i'm truly sorry. i never wanted to be the reason you felt tired or worn out. i know i'm not the easiest person to love. i have my moods, my fears, and all the things that make me hard to understand sometimes. i regret the times i made things harder for you. i'm sorry for every argument, every misunderstanding, and every moment that tested your patience. i never meant to hurt you or make you feel like loving me was too much. please know that i never wanted to cause you any pain. i just hope you saw the love i was trying to give, even if it didn't always come out right. i'm sorry if loving me ever felt like a burden.</p>
+
+<p>i don’t know what the future holds for us, but what i do know is this: i still choose you, every time, in every version of my life, even if we’re quiet now, even if the connection feels distant, my heart still beats for you in the same way it did. thank you for being my other half—for teaching me what real love feels like. thank you for staying when you could’ve walked away. thank you for giving me a love worth fighting for.</p>
+
+
+                        <p>With all my heart,<br> Your asawa, Kyle</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="slideshowTab" class="tab-content">
+                <h2 style="color: var(--primary-color); font-family: 'Dancing Script', cursive; font-size: 2.5em;">honk mimimi</h2>
+                <div class="slideshow-container">
+                    <img id="slideshow-image" src="" alt="Slideshow Image">
+                    <p id="slideshow-caption" class="slideshow-caption"></p>
+                </div>
+                <div class="slideshow-controls">
+                    <button onclick="changeSlide(-1)">❮ Previous</button>
+                    <button onclick="changeSlide(1)">Next ❯</button>
+                </div>
+                <p style="margin-top: 20px; color: var(--text-color-light);">i hope you like it</p>
+            </div>
+
+
+            <div id="coordsTab" class="tab-content">
+                
+                <h2 style="color: var(--primary-color); font-family: 'Dancing Script', cursive; font-size: 2.5em;">You deserve this!</h2>
+                
+                <p class="location-info" style="font-size: 1.5em; color: var(--text-color-light); margin: 40px 0; line-height: 1.6;">it’s crazy how fast time went, and yet it feels like we’ve been through so much already. we’ve had our sweetest highs and our most painful lows. we’ve had moments when everything felt perfect, and moments when everything fell apart, but no matter what, i still find myself here—loving you, missing you, hoping for us. even if things aren’t perfect right now, even if we’re still figuring out what comes next—i just want you to know that this heart still beats for you. it always will. <span style="font-family: 'Dancing Script', cursive; font-weight: 700; color: var(--primary-color); text-shadow: 0 0 8px var(--border-glow);"></span></p>
+                
+                <div style="margin-top: 40px;">
+                    <p style="font-size: 1.3em; color: var(--text-color-light);">this love hasn’t been easy, and honestly, i think that’s what makes it real, because love isn’t just about the butterflies—it’s about the choice to stay, even when it hurts. it’s about holding on when everything else tells you to give up through every misunderstanding, every silence, every tearful night — i still choose you. every single time. thank you for staying through all the chaos. for still being here even when i’m not the easiest person to love. thank you for giving me patience when i didn’t deserve it, and love when i couldn’t love myself enough. you’ve taught me what it means to love unconditionally—even from miles away. no matter what happens, i’ll always be thankful for you. for every moment, every effort, every bit of love you gave me. you’ve changed my life. you are the best thimg that ever happened to me!</p>
+                </div>
+                
+                <img src="images/for-you.png" class="for-you-img">
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
