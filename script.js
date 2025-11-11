@@ -176,7 +176,7 @@ const slides = [
   { url: "photo7.jpg", caption: "mahal na mahal kita"},
   { url: "photo8.jpg", caption: "it will always be you"},
   { url: "photo10.jpg", caption: "sobrang ganda mo!"},
-  { url: "images/photo11.jpg", captiom: "napakaganda!"}
+  { url: "photo11.jpg", caption: "napakaganda!"}
 
   // Add more slides here!
 ];
