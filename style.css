@@ -35,7 +35,7 @@ body {
 /* ================================================= */
 
     /* Set the background to your local image file */
-    background-image: url("images/photo2.png");
+    background-image: url("photo2.png");
     
     /* Ensure the image covers the entire viewport without being distorted */
     background-size: cover;
