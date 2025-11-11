@@ -168,32 +168,15 @@ let slideshowInterval;
 
 // Custom Slideshow Data: REPLACE THESE WITH YOUR OWN PHOTOS AND CAPTIONS
 const slides = [
-  { url: "images/photo1.jpg", caption: "so so so so cute" },
-  { url: "images/photo3.jpg", caption: "look how beautiful it is when we're together" },
-  { url: "images/photo4.jpg", caption: "being with you will always be the best feeling" },
-  { url: "images/photo5.jpg", caption: "you're my home" },
-  { url: "images/photo6.jpg", caption: "ikaw lang palagi!"
-    
-  },
-  { url: "images/photo7.jpg", caption: "mahal na mahal kita"
-    
-    
-    
-  },
-  { url: "images/photo8.jpg", caption: "it will always be you"
-    
-    
-    
-  },
-  { url: "images/photo10.jpg", caption: "sobrang ganda mo!"
-    
-    
-    
-  },
-  { url: "images/photo11.jpg", captiom: "napakaganda!"
-    
-    
-  }
+  { url: "photo1.jpg", caption: "so so so so cute" },
+  { url: "photo3.jpg", caption: "look how beautiful it is when we're together" },
+  { url: "photo4.jpg", caption: "being with you will always be the best feeling" },
+  { url: "photo5.jpg", caption: "you're my home" },
+  { url: "photo6.jpg", caption: "ikaw lang palagi!"},
+  { url: "photo7.jpg", caption: "mahal na mahal kita"},
+  { url: "photo8.jpg", caption: "it will always be you"},
+  { url: "photo10.jpg", caption: "sobrang ganda mo!"},
+  { url: "images/photo11.jpg", captiom: "napakaganda!"}
 
   // Add more slides here!
 ];
